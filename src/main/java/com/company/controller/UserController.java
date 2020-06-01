@@ -37,30 +37,11 @@ public class UserController {
         return usersList;
     }
 
+    @RequestMapping("/getUser")
+    public CustomUser getUserById(@RequestParam String id){
+        return userService.findByID(Long.valueOf(id));
+    }
 
-//    @RequestMapping(value = "/update", method = RequestMethod.POST)
-//    public ResponseEntity<Void> update(@RequestParam(required = false) String email,
-//                         @RequestParam(required = false) String phone,
-//                         @RequestParam(required = false) int stateNumber) {
-//        CustomUser user = getCurrentUser().getUser();
-//
-//        String login = user.getLogin();
-//        if(userService.updateUser(login, email, phone) && userService.setUserStatus(user.getId(),stateNumber)){
-//            return ResponseEntity.ok().build();
-//        }else {
-//            return ResponseEntity.badRequest().build();
-//        }
-//
-//    }
-
-//    @RequestMapping(value = "/delete", method = RequestMethod.POST)
-//    public String delete(@RequestParam(name = "toDelete[]", required = false) List<Long> ids,
-//                         Model model) {
-//        userService.deleteUsers(ids);
-//        model.addAttribute("users", userService.getAllUsers());
-//
-//        return "admin";
-//    }
 
     @RequestMapping("/")
     public ModelAndView loginPage() {

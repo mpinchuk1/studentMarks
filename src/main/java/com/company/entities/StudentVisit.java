@@ -8,7 +8,8 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-public class StudentMark {
+public class StudentVisit {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -20,19 +21,19 @@ public class StudentMark {
     @JoinColumn(name = "subject_id", nullable = false)
     @JsonManagedReference
     private Subject subject;
-    private int mark;
+    private boolean visit;
     @Temporal(TemporalType.DATE)
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy", timezone = "Europe/Kiev")
     private Date date;
 
-    public StudentMark(){
+    public StudentVisit(){
 
     }
 
-    public StudentMark(CustomUser student, Subject subject, int mark, Date date){
+    public StudentVisit(CustomUser student, Subject subject, boolean visit, Date date){
         this.student = student;
         this.subject = subject;
-        this.mark = mark;
+        this.visit = visit;
         this.date = date;
     }
 
@@ -60,12 +61,12 @@ public class StudentMark {
         this.subject = subject;
     }
 
-    public int getMark() {
-        return mark;
+    public boolean isVisit() {
+        return visit;
     }
 
-    public void setMark(int mark) {
-        this.mark = mark;
+    public void setVisit(boolean visit) {
+        this.visit = visit;
     }
 
     public Date getDate() {
@@ -75,6 +76,4 @@ public class StudentMark {
     public void setDate(Date date) {
         this.date = date;
     }
-
-
 }

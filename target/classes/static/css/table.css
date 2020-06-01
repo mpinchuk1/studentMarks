@@ -1,0 +1,302 @@
+/*! system-font.css v2.0.2 | CC0-1.0 License | github.com/jonathantneal/system-font-css */
+
+@font-face {
+	font-family: system-ui;
+	font-style: normal;
+	font-weight: 300;
+	src: local(".SFNS-Light"), local(".SFNSText-Light"), local(".HelveticaNeueDeskInterface-Light"), local(".LucidaGrandeUI"), local("Segoe UI Light"), local("Ubuntu Light"), local("Roboto-Light"), local("DroidSans"), local("Tahoma");
+}
+
+@font-face {
+	font-family: system-ui;
+	font-style: italic;
+	font-weight: 300;
+	src: local(".SFNS-LightItalic"), local(".SFNSText-LightItalic"), local(".HelveticaNeueDeskInterface-Italic"), local(".LucidaGrandeUI"), local("Segoe UI Light Italic"), local("Ubuntu Light Italic"), local("Roboto-LightItalic"), local("DroidSans"), local("Tahoma");
+}
+
+@font-face {
+	font-family: system-ui;
+	font-style: normal;
+	font-weight: 400;
+	src: local(".SFNS-Regular"), local(".SFNSText-Regular"), local(".HelveticaNeueDeskInterface-Regular"), local(".LucidaGrandeUI"), local("Segoe UI"), local("Ubuntu"), local("Roboto-Regular"), local("DroidSans"), local("Tahoma");
+}
+
+@font-face {
+	font-family: system-ui;
+	font-style: italic;
+	font-weight: 400;
+	src: local(".SFNS-Italic"), local(".SFNSText-Italic"), local(".HelveticaNeueDeskInterface-Italic"), local(".LucidaGrandeUI"), local("Segoe UI Italic"), local("Ubuntu Italic"), local("Roboto-Italic"), local("DroidSans"), local("Tahoma");
+}
+
+@font-face {
+	font-family: system-ui;
+	font-style: normal;
+	font-weight: 500;
+	src: local(".SFNS-Medium"), local(".SFNSText-Medium"), local(".HelveticaNeueDeskInterface-MediumP4"), local(".LucidaGrandeUI"), local("Segoe UI Semibold"), local("Ubuntu Medium"), local("Roboto-Medium"), local("DroidSans-Bold"), local("Tahoma Bold");
+}
+
+@font-face {
+	font-family: system-ui;
+	font-style: italic;
+	font-weight: 500;
+	src: local(".SFNS-MediumItalic"), local(".SFNSText-MediumItalic"), local(".HelveticaNeueDeskInterface-MediumItalicP4"), local(".LucidaGrandeUI"), local("Segoe UI Semibold Italic"), local("Ubuntu Medium Italic"), local("Roboto-MediumItalic"), local("DroidSans-Bold"), local("Tahoma Bold");
+}
+
+@font-face {
+	font-family: system-ui;
+	font-style: normal;
+	font-weight: 700;
+	src: local(".SFNS-Bold"), local(".SFNSText-Bold"), local(".HelveticaNeueDeskInterface-Bold"), local(".LucidaGrandeUI"), local("Segoe UI Bold"), local("Ubuntu Bold"), local("Roboto-Bold"), local("DroidSans-Bold"), local("Tahoma Bold");
+}
+
+@font-face {
+	font-family: system-ui;
+	font-style: italic;
+	font-weight: 700;
+	src: local(".SFNS-BoldItalic"), local(".SFNSText-BoldItalic"), local(".HelveticaNeueDeskInterface-BoldItalic"), local(".LucidaGrandeUI"), local("Segoe UI Bold Italic"), local("Ubuntu Bold Italic"), local("Roboto-BoldItalic"), local("DroidSans-Bold"), local("Tahoma Bold");
+}
+
+
+
+*, ::before, ::after {
+	box-sizing: border-box;
+}
+
+:root, body {
+	position: relative;
+	width: 100%;
+	min-height: 100vh;
+	padding: 0;
+	margin: 0;
+}
+
+body {
+	font-family: 'system-ui', sans-serif;
+	font-size: 16px;
+	line-height: 1.5;
+}
+
+body {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 4em 4em 8em;
+	background: hsl(0, 0%, 95%);
+}
+
+#studentMarksTableContainer {
+	width: 100%;
+	max-width: 1200px;
+	padding: 4em;
+	background: white;
+	border-radius: 4px;
+	box-shadow: 0 2px 6px #0001;
+}
+
+#selectedSubjectTitle {
+	margin: 0 0 20px;
+}
+
+#selectedSubjectSubtitle {
+	margin: 0 0 20px;
+}
+
+divider {
+	display: block;
+	border-top: 1px solid rgba(0,0,0,0.12);
+	margin: 30px 0;
+}
+
+table {
+	width: calc(100% + 20px);
+	margin: 20px -10px 0;
+}
+
+table thead {
+	background: hsl(0, 0%, 85%);
+}
+
+table tbody tr {
+	background: hsl(0, 0%, 97%);
+}
+
+table tbody tr:nth-child(even) {
+	background: hsl(0, 0%, 95%);
+}
+
+table td {
+	padding: 10px;
+}
+
+table td:not(:first-child) {
+	text-align: center;
+}
+
+#bottomButtons {
+    margin: 3em 0 0;
+    display: flex;
+    justify-content: end;
+}
+
+button {
+	transition: background-color .25s ease;
+    background: hsl(199.3, 49.4%, 45.7%);
+    color: white;
+    border: none;
+    padding: 12px 36px;
+    font-size: 1rem;
+    border-radius: 4px;
+	display: block;
+	cursor: pointer;
+}
+button:hover {
+    background: hsl(199.3, 49.4%, 50.7%);
+}
+button:active, button:focus {
+    background: hsl(199.3, 49.4%, 40.7%);
+}
+
+
+
+.grayout {
+	cursor:pointer;
+	position:fixed;
+	width:100%; height:100%; min-height:100%;
+	background:hsla(0, 0%, 90%, .9);
+	animation: fade-in 1 0.05s ease;
+}
+.page-block {
+	display: block;
+	width: 100%;
+	padding: 1em;
+	border-radius: 4px;
+	background: white;
+}
+.shadow-5 {
+	--shadow-color: hsla(0, 0%, 0%, .1);
+	box-shadow: 0  5px  9px var(--shadow-color), 0 18px 17px var(--shadow-color);
+}
+.popup-body {
+	position: fixed;
+	width: 100%; height: 100%; min-height:100%;
+	top:0; bottom:0; left:0; right:0;
+	margin:0; padding:0;
+	overflow-y: auto;
+	overflow-x: hidden;
+	z-index: 30000;
+	font-size: 20px;
+}
+.popup-wrap {
+	width: 100%; min-height:100%;
+	padding: 2em;
+	padding-bottom: 5em;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	align-content: center;
+	justify-content: center;
+}
+.popup {
+	position: relative;
+	padding: 1.5em;
+	max-width: 22em;
+	animation: scale-up 0.5s cubic-bezier(0,1,0,1), fade-in ease 0.4s;
+}
+@keyframes fade-in {
+	0% { opacity: 0 }
+}
+.circle-button {
+	width: 1.5em;
+	height: 1.5em;
+	display: block;
+	cursor: pointer;
+	padding: 0.4em;
+}
+.close-wrap {
+	position: absolute;
+	width: 1.3em;
+	height: 1.3em;
+	top: 0.2em;
+	right: 0.2em;
+	display: block;
+	cursor: pointer;
+	padding: 0.3em;
+}
+.circle-button,
+.button-icon::before,
+.button-icon::after,
+.close-wrap,
+.close::before,
+.close::after {
+	transition: 0.2s;
+}
+.circle-button:hover,
+.close-wrap:hover {
+	background: #ccc;
+}
+.button-icon,
+.close {
+	color: #ccc;
+}
+.button-icon::before,
+.button-icon::after,
+.close::before,
+.close::after {
+	background: linear-gradient(to right, currentcolor 100%, transparent 101%) no-repeat;
+}
+.circle-button:active {
+	background: #999;
+}
+.grayout:active + * > * > .close-wrap, .close-wrap:active {
+	background: #f00;
+}
+.circle-button:hover > .button-icon::before,
+.circle-button:hover > .button-icon::after,
+.circle-button:active > .button-icon::before,
+.circle-button:active > .button-icon::after,
+.close-wrap:hover > .close::before,
+.close-wrap:hover > .close::after,
+.close-wrap:active > .close::before,
+.close-wrap:active > .close::after,
+.grayout:active + * > * > .close-wrap > .close::before,
+.grayout:active + * > * > .close-wrap > .close::after {
+	color: white;
+}
+.grayout:active + * > * > .close-wrap,
+.close-wrap:hover,
+.close-wrap:active,
+.circle-button:hover,
+.circle-button:active {
+	border-radius:50%;
+}
+.close {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+}
+.close::before, .close::after {
+	content: '';
+	position: absolute;
+	height: 2px;
+	width: 100%;
+	top: 50%;
+	left: 0;
+	margin-top: -1px;
+}
+.close::before {
+	animation: close-icon-stroke 0.25s;
+	transform: rotate(45deg);
+}
+.close::after {
+	animation: close-icon-stroke-b 0.25s;
+	transform: rotate(-45deg);
+}
+@keyframes close-icon-stroke {
+	0%   { background-size:   0  }
+	60%  { background-size: 102% }
+}
+@keyframes close-icon-stroke-b {
+	0%, 40% { background-size: 0 }
+	100% { background-size: 102% }
+}

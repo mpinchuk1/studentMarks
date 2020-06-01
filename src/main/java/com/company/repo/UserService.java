@@ -1,6 +1,5 @@
 package com.company.repo;
 
-import com.company.config.AppConfig;
 import com.company.entities.CustomUser;
 import com.company.utils.UserRole;
 import org.springframework.stereotype.Service;
@@ -8,7 +7,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Date;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class UserService {
@@ -42,13 +40,12 @@ public class UserService {
     }
 
     @Transactional
-    public boolean addUser(String login, String password, String name, String surname, String address,
-                           String sex, Date birthday, UserRole role) {
+    public void addUser(String login, String password, String name, String surname, String address,
+                        String sex, Date birthday, UserRole role) {
 
         CustomUser user = new CustomUser(login, password, name, surname, address, sex, birthday, role);
         subjectService.findAllSubjects().forEach(s -> s.addUserToSubject(user));
         userRepository.save(user);
-        return true;
     }
 
 }

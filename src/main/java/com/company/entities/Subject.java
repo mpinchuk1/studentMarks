@@ -1,5 +1,6 @@
 package com.company.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
@@ -16,6 +17,7 @@ public class Subject {
     @JoinColumn(name = "owner_id", nullable = false)
     @JsonManagedReference
     private CustomUser teacher;
+    @JsonBackReference
     @ManyToMany(mappedBy = "subjects")
     private List<CustomUser> subjectMembers = new ArrayList<>();
 
@@ -62,4 +64,6 @@ public class Subject {
     public void setSubjectMembers(List<CustomUser> subjectMembers) {
         this.subjectMembers = subjectMembers;
     }
+
+
 }

@@ -26,7 +26,7 @@ public class SubjectService {
     }
 
     @Transactional
-    public boolean addSubject(String name, String teacherLogin) {
+    public void addSubject(String name, String teacherLogin) {
 
         Subject newSubject = new Subject(name);
         CustomUser teacher = userRepository.findByLogin(teacherLogin);
@@ -35,7 +35,6 @@ public class SubjectService {
         userRepository.findAll().forEach(newSubject::addUserToSubject);
 
         subjectRepository.save(newSubject);
-        return true;
     }
 
     @Transactional(readOnly = true)

@@ -7,8 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -23,10 +21,10 @@ public class MarkService {
     private SubjectRepository subjectRepository;
 
     @Transactional(readOnly = true)
-    public List<StudentMark> findAllMarksBySubjectAndStudent(String studentt, String subjectt) {
+    public List<StudentMark> findAllMarksBySubjectAndStudent(String studentLogin, String subjectName) {
 
-        CustomUser student = userRepository.findByLogin(studentt);
-        Subject subject = subjectRepository.findByName(subjectt);
+        CustomUser student = userRepository.findByLogin(studentLogin);
+        Subject subject = subjectRepository.findByName(subjectName);
 
         return markRepository.findMarksByStudentAndSubject(student, subject);
     }
@@ -37,13 +35,19 @@ public class MarkService {
     }
 
     @Transactional
-    public boolean addMark(int mark, String studentName, String subjectName, Date date){
+    public void addMark(int mark, String studentLogin, String subjectName, Date date){
 
-        CustomUser student = userRepository.findByLogin(studentName);
+        CustomUser student = userRepository.findByLogin(studentLogin);
         Subject subject = subjectRepository.findByName(subjectName);
 
         StudentMark newMark = new StudentMark(student, subject, mark, date);
+        student.addMark(newMark);
         markRepository.save(newMark);
-        return true;
+    }
+
+    @Transactional
+    public void deleteMark(CustomUser student, Date date){
+        markRepository.deleteByDateAndStudent(student, date);
+        student.deleteMark(markRepository.findByDateAndStudent(student, date));
     }
 }

@@ -3,6 +3,7 @@ package com.company.entities;
 import com.company.utils.UserRole;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -22,14 +23,16 @@ public class CustomUser {
     private String address;
     private String sex;
     @Temporal(TemporalType.DATE)
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy/MM/dd", timezone = "Europe/Kiev")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy", timezone = "Europe/Kiev")
     private Date birthday;
     @Enumerated(EnumType.STRING)
     private UserRole role;
-
+    @JsonManagedReference
     @OneToMany(mappedBy = "student", cascade = CascadeType.ALL)
     private List<StudentMark> marks = new ArrayList<>();
-
+    @JsonManagedReference
+    @OneToMany(mappedBy = "student", cascade = CascadeType.ALL)
+    private List<StudentVisit> visits = new ArrayList<>();
     @JsonBackReference
     @ManyToMany(cascade = CascadeType.PERSIST)
     @JoinTable(name = "user_subject",
@@ -50,6 +53,25 @@ public class CustomUser {
         this.sex = sex;
         this.birthday = birthday;
         this.role = role;
+    }
+
+    public void addMark(StudentMark mark){
+        marks.add(mark);
+        mark.setStudent(this);
+    }
+
+    public void deleteMark(StudentMark mark){
+        marks.remove(mark);
+    }
+
+    public void addVisit(StudentVisit visit){
+        visits.add(visit);
+        visit.setStudent(this);
+    }
+
+    public void deleteVisit(StudentVisit visit){
+        visits.remove(visit);
+
     }
 
     public Long getId() {
@@ -138,5 +160,13 @@ public class CustomUser {
 
     public void setSubjects(List<Subject> subjects) {
         this.subjects = subjects;
+    }
+
+    public List<StudentVisit> getVisits() {
+        return visits;
+    }
+
+    public void setVisits(List<StudentVisit> visits) {
+        this.visits = visits;
     }
 }
