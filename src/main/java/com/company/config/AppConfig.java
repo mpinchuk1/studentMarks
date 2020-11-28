@@ -40,27 +40,27 @@ public class AppConfig {
                 userService.addUser("nastya", "nastya", "Nastya", "Dobrodiy",
                         "home", "female", new Date(), UserRole.USER);
                 userService.addUser("tanya", "tanya", "Tanya", "Pospeshnaya",
-                        "home1", "female", new Date(3242390894L+60000000000L), UserRole.USER);
+                        "home1", "female", new Date(3242390894L + 60000000000L), UserRole.USER);
                 userService.addUser("andr", "andr", "Andrew", "Darialov",
-                        "home2", "male", new Date(3242390894L+60000000000L), UserRole.USER);
+                        "home2", "male", new Date(3242390894L + 60000000000L), UserRole.USER);
                 userService.addUser("anton", "anton", "Anton", "Brajnii",
-                        "home3", "male", new Date(3242390894L+60000008000L), UserRole.USER);
+                        "home3", "male", new Date(3242390894L + 60000008000L), UserRole.USER);
                 subjectService.addSubject("Math", ADMIN);
                 subjectService.addSubject("Biology", ADMIN);
                 subjectService.addSubject("Programing", ADMIN);
 
                 for (int i = 0; i < 5; i++) {
-                    c.set(2020, 4+i, 4);
+                    c.set(2020, 4 + i, 4);
                     markService.addMark(5, "nastya", "Math", c.getTime());
                     visitService.addVisit(true, "nastya", "Math", c.getTime());
                 }
                 for (int i = 0; i < 5; i++) {
-                    c.set(2020, Calendar.MAY+i, 4);
+                    c.set(2020, Calendar.MAY + i, 4);
                     markService.addMark(4, "nastya", "Programing", c.getTime());
                     visitService.addVisit(false, "nastya", "Programing", c.getTime());
                 }
                 for (int i = 0; i < 5; i++) {
-                    c.set(2020, Calendar.MAY+i, 4);
+                    c.set(2020, Calendar.MAY + i, 4);
                     markService.addMark(2, "anton", "Math", c.getTime());
                     visitService.addVisit(true, "anton", "Math", c.getTime());
                 }
@@ -72,24 +72,24 @@ public class AppConfig {
                 }
 
                 for (int i = 0; i < 5; i++) {
-                    c.set(2020, Calendar.JULY+i, 4);
+                    c.set(2020, Calendar.JULY + i, 4);
                     markService.addMark(65, "andr", "Math", c.getTime());
                     visitService.addVisit(true, "andr", "Math", c.getTime());
                 }
 
                 for (int i = 0; i < 5; i++) {
-                    c.set(2020, Calendar.APRIL+i, 4);
+                    c.set(2020, Calendar.APRIL + i, 4);
                     markService.addMark(2, "anton", "Math", c.getTime());
                     visitService.addVisit(true, "anton", "Math", c.getTime());
                 }
 
                 for (int i = 0; i < 3; i++) {
-                    c.set(2020, Calendar.APRIL, 2+i*3);
+                    c.set(2020, Calendar.APRIL, 2 + i * 3);
                     markService.addMark(3, "tanya", "Biology", c.getTime());
                     visitService.addVisit(true, "tanya", "Biology", c.getTime());
                 }
                 for (int i = 0; i < 4; i++) {
-                    c.set(2020, Calendar.APRIL, 2+i*3);
+                    c.set(2020, Calendar.APRIL, 2 + i * 3);
                     markService.addMark(3, "nastya", "Biology", c.getTime());
                     visitService.addVisit(false, "nastya", "Biology", c.getTime());
                 }
