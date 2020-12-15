@@ -16,23 +16,15 @@ public class CustomUser {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private String login;
-    private String password;
     private String name;
-    private String surname;
     private String address;
     private String sex;
     @Temporal(TemporalType.DATE)
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy", timezone = "Europe/Kiev")
     private Date birthday;
-    @Enumerated(EnumType.STRING)
-    private UserRole role;
     @JsonManagedReference
     @OneToMany(mappedBy = "student", cascade = CascadeType.ALL)
     private List<StudentMark> marks = new ArrayList<>();
-    @JsonManagedReference
-    @OneToMany(mappedBy = "student", cascade = CascadeType.ALL)
-    private List<StudentVisit> visits = new ArrayList<>();
     @JsonBackReference
     @ManyToMany(cascade = CascadeType.PERSIST)
     @JoinTable(name = "user_subject",
@@ -43,35 +35,20 @@ public class CustomUser {
     public CustomUser() {
     }
 
-    public CustomUser(String login, String password, String name, String surname, String address,
-            String sex, Date birthday, UserRole role) {
-        this.login = login;
-        this.password = password;
+    public CustomUser(String name, String address, String sex, Date birthday) {
         this.name = name;
-        this.surname = surname;
         this.address = address;
         this.sex = sex;
         this.birthday = birthday;
-        this.role = role;
     }
 
-    public void addMark(StudentMark mark){
+    public void addMark(StudentMark mark) {
         marks.add(mark);
         mark.setStudent(this);
     }
 
-    public void deleteMark(StudentMark mark){
+    public void deleteMark(StudentMark mark) {
         marks.remove(mark);
-    }
-
-    public void addVisit(StudentVisit visit){
-        visits.add(visit);
-        visit.setStudent(this);
-    }
-
-    public void deleteVisit(StudentVisit visit){
-        visits.remove(visit);
-
     }
 
     public Long getId() {
@@ -82,36 +59,12 @@ public class CustomUser {
         this.id = id;
     }
 
-    public String getLogin() {
-        return login;
-    }
-
-    public void setLogin(String login) {
-        this.login = login;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
     public String getName() {
         return name;
     }
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getSurname() {
-        return surname;
-    }
-
-    public void setSurname(String surname) {
-        this.surname = surname;
     }
 
     public String getAddress() {
@@ -138,14 +91,6 @@ public class CustomUser {
         this.birthday = birthday;
     }
 
-    public UserRole getRole() {
-        return role;
-    }
-
-    public void setRole(UserRole role) {
-        this.role = role;
-    }
-
     public List<StudentMark> getMarks() {
         return marks;
     }
@@ -160,13 +105,5 @@ public class CustomUser {
 
     public void setSubjects(List<Subject> subjects) {
         this.subjects = subjects;
-    }
-
-    public List<StudentVisit> getVisits() {
-        return visits;
-    }
-
-    public void setVisits(List<StudentVisit> visits) {
-        this.visits = visits;
     }
 }

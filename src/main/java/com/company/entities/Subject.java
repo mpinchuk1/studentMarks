@@ -13,10 +13,6 @@ public class Subject {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String name;
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "owner_id", nullable = false)
-    @JsonManagedReference
-    private CustomUser teacher;
     @JsonBackReference
     @ManyToMany(mappedBy = "subjects")
     private List<CustomUser> subjectMembers = new ArrayList<>();
@@ -28,7 +24,7 @@ public class Subject {
         this.name = name;
     }
 
-    public void addUserToSubject(CustomUser student){
+    public void addUserToSubject(CustomUser student) {
         subjectMembers.add(student);
         student.getSubjects().add(this);
     }
@@ -47,14 +43,6 @@ public class Subject {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public CustomUser getTeacher() {
-        return teacher;
-    }
-
-    public void setTeacher(CustomUser teacher) {
-        this.teacher = teacher;
     }
 
     public List<CustomUser> getSubjectMembers() {

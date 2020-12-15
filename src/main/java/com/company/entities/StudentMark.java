@@ -21,19 +21,18 @@ public class StudentMark {
     @JsonManagedReference
     private Subject subject;
     private int mark;
-    @Temporal(TemporalType.DATE)
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy", timezone = "Europe/Kiev")
-    private Date date;
+    private String semester;
+    private String type;
 
-    public StudentMark(){
+    public StudentMark() {
 
     }
 
-    public StudentMark(CustomUser student, Subject subject, int mark, Date date){
+    public StudentMark(CustomUser student, Subject subject, int mark, String semester) {
         this.student = student;
         this.subject = subject;
         this.mark = mark;
-        this.date = date;
+        this.semester = semester;
     }
 
     public Long getId() {
@@ -66,14 +65,6 @@ public class StudentMark {
 
     public void setMark(int mark) {
         this.mark = mark;
-    }
-
-    public Date getDate() {
-        return date;
-    }
-
-    public void setDate(Date date) {
-        this.date = date;
     }
 
 
